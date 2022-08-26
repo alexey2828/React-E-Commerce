@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import PrimarySearchAppBar from './components/header';
+import { ERoutsName } from './const/routsName';
+import HomePage from './pages/homePage';
+import PostItemPage from './pages/postItemPage';
+import TodoItemPage from './pages/todoItemPage';
+import TodosPage from './pages/todosPage';
+import UserItemPage from './pages/userItemPage';
+import UserPage from './pages/userPage';
 
-function App() {
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{background: '#f5f5f7'}}>
+      <BrowserRouter>
+        <div>
+          <div>
+            <PrimarySearchAppBar/>
+          </div>
+          <Routes>
+            <Route path={ERoutsName.Home} element={<HomePage />} />
+            <Route path={ERoutsName.Users} element={<UserPage />} />
+            <Route path={ERoutsName.Todos} element={<TodosPage />} />
+            <Route path={ERoutsName.UserId} element={<UserItemPage />} />
+            <Route path={ERoutsName.PostId} element={<PostItemPage />} />
+            <Route path={ERoutsName.ToDoId} element={<TodoItemPage />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
